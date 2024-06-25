@@ -1,0 +1,44 @@
+@startuml
+
+class Hotel {
+    - name: string
+    - rooms: Room[]
+    - reservations: Reservation[]
+    + Hotel(name: string)
+    + addRoom(room: Room): void
+    + removeRoom(room: Room): void
+    + addReservation(reservation: Reservation): void
+    + removeReservation(reservation: Reservation): void
+    + getRooms(): Room[]
+    + getReservations(): Reservation[]
+    + getName(): string
+}
+
+class Room {
+    - numberOfRooms: int
+    - type: string
+    - occupied: boolean
+    + Room(numberOfRooms: int, type: string, occupied: boolean)
+    + getNumberOfRooms(): int
+    + getType(): string
+    + getOccupied(): boolean
+    + setNumberOfRooms(numberOfRooms: int): void
+    + setType(type: string): void
+    + setOccupied(occupied: boolean): void
+}
+
+class Reservation {
+    - roomNumber: int
+    - guestName: string
+    - guestPhoneNumber: string
+    - checkInDate: string
+    - checkOutDate: string
+    - numberOfGuests: int
+}
+
+Hotel --left--> Room : contains
+Hotel --> Reservation : contains
+Room --> Reservation : has
+
+
+@enduml
